@@ -1,6 +1,10 @@
 # UE4LocalizationCSVConverter
 For easy localization job
 
+# SOMEBODY HELP ME!
+### I'M LOOKING FOR SOMEBODY MAKING DESIGN AS GOOD AS POSSIBLE!
+I can make it using `css` but i'm very suck to design. I'm sure you don't want my rainbow-gradation design.
+
 # HOW TO
 ## 1. Make your translation '.csv' file like below.
 ![img](./Image/HowTo_1.jpg)

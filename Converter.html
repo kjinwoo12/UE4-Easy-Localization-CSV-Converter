@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Standalone -->
+    <script src="./CsvHandler.js"></script>
+    <script src="./SelfDownloader.js"></script>
+    <!---------------->
+
+    <!-- Primary dependency -->
+    <script src="./ArchiveConverter.js"></script>
+    <!------------------------>
+
+    <!-- Secondary dependency -->
+    <!-------------------------->
+
+    <meta name="UE Localization CSV Converter" />
+    <script>     
+        var archives = 0;
+        function onFileSelected(fileSelector) {
+            document.getElementById("downloadButtonsArea").innerHTML = "";
+            document.getElementById("convertedResultArea").innerHTML = "";
+
+            const file = fileSelector.files[0];
+            const fileReader = new FileReader();
+            fileReader.onload = (event) => {
+                const csvString = event.target.result;
+                const csv = csvHandler.parseCsv(csvString);
+                const keyKey = csv[0][0];
+                archives = archiveConverter.parseFromCsv(csv)
+                document.getElementById("key").value = keyKey;
+                Object.keys(archives).map(languageKey=>{
+                    addDownloadButton(languageKey);
+                    addConvertResult(languageKey);
+                })
+            };
+            fileReader.readAsText(file);
+        }
+
+        function addDownloadButton(languageKey) {
+            const downloadButtonsArea = document.getElementById("downloadButtonsArea");
+            const downloadButtonElementString = "<div><input type='text' value='" + languageKey + "'/><input type='button' onclick='downloadLanguage(\""+languageKey+"\")' value='download'/></div>";
+            downloadButtonsArea.innerHTML += downloadButtonElementString;
+        }
+
+        function downloadLanguage(languageKey) {
+            const jsonString = JSON.stringify(archives[languageKey]);
+            const blob = new Blob([jsonString], {type: "application/json;charset=utf-8"});
+            const url = URL.createObjectURL(blob);
+
+            const anchorTag = document.createElement("a");
+            anchorTag.setAttribute("download", languageKey+"-Game.archive");
+            anchorTag.setAttribute("href", url);
+            document.body.appendChild(anchorTag);
+            anchorTag.click();
+            document.body.removeChild(anchorTag);
+        }
+
+        function addConvertResult(languageKey) {
+            const archive = archives[languageKey];
+            const convertedResultArea = document.getElementById("convertedResultArea");
+            const convertedResult = "<div><p>"+languageKey+"</p><textarea style='width:800px; height:400px;'>"+JSON.stringify(archive)+"</textarea><hr/>";
+            convertedResultArea.innerHTML+=convertedResult;
+        }
+    </script>
+</head>
+
+<body>
+    <p>Select .csv file <input id="fileSelector" type="file" accept=".csv" onchange="onFileSelected(this)" /></p>
+    <p>CSV file Content <input type="button" value="Generate .archive" onclick="generateArchive()" /> </p>
+    <div style="border:1px; padding: 5px; display:inline-block; border-style: solid; text-align: center;">
+        <div style="border:1px; padding: 5px;">
+            Key : <input id="key" type="text" value=""/>
+        </div>
+        <div>===== Languages =====</div>
+        <div id="downloadButtonsArea" style="display:inline-block; border:1px; padding: 5px">
+        </div>
+    </div>
+
+    <p>Copy below and save '.archive' file</p>
+    <div id="convertedResultArea">
+
+    </div>
+</body>
+
+</html>

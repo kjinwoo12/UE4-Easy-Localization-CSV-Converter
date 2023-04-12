@@ -5,6 +5,8 @@ For easy localization job
 ## 1. Make your translation '.csv' file like below.
 ![img](./Image/HowTo_1.jpg)
 ![img](./Image/HowTo_2.jpg)
+
+Make sure the first language is the main language
 ## 2. Run Convert.html
 ## 3. Select your `.csv` file
 ![img](./Image/HowTo_3.jpg)

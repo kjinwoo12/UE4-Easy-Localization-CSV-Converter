@@ -1,4 +1,4 @@
-# UE4LocalizationCSVConverter
+# UE4 Easy Localization CSV Converter
 For easy localization job
 
 # HOW TO

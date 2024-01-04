@@ -3,7 +3,7 @@ For easy localization job
 
 # SOMEBODY HELP ME!
 ### I'M LOOKING FOR SOMEBODY MAKING DESIGN AS GOOD AS POSSIBLE!
-I can make it using `css` but i'm very suck to design. I'm sure you don't want to see my rainbow-gradation design.
+I can make it using `css` but i'm very bad to design. I'm sure you don't want to see my rainbow-gradation design.
 
 # HOW TO
 ## 1. Make your translation '.csv' file like below.

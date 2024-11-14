@@ -20,6 +20,6 @@ Make sure the first language is the main language
 It will be saved as `{language Code}-Game.archive' on your computer. It doesn't need server. It is worked in client-side.
 
 ## 6. Enjoy your office-life with your co-worker designer!
-Done! Just move the files on Localization directory in your project! Ofcourse you have to change your file names to `Game.archive` and move into correct directory.
+Done! Just move the files on Localization directory in your project! Ofcourse you will have to change your file names to `Game.archive` and move it into correct directory.
 
 ![img](./Image/HowTo_5.jpg)
